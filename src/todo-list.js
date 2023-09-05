@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function TodoList(){
+const url = "http://localhost:8080/api/todos"
 
-    return(
-        <p>Hello from toDoList</p>
+const TodoList = () => {
+    const [todos, setTodos] = useState([])
+
+    const fetchTodoData = () => {
+        fetch(url)
+        .then(res =>{return res.json()})
+        .then(data => {setTodos(data)})
+        }
+    useEffect(() => {fetchTodoData()}, [])
+
+        return(
+        <div>
+            <p>Todos lenght: {todos.length}</p>
+            {todos.length > 0 && (
+
+                <ul>
+                    {todos.map(todo => (
+                        <li key={todo.id}>{todo.todoName}</li>
+                    ))}
+                </ul>
+                )}
+        </div>
     )
 }
+
 
 export default TodoList;
