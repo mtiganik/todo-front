@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useForm({ additionalData }) {
+function useForm({ additionalData, updateTodoList }) {
   const [status, setStatus] = useState('');
   const [message, setMessage] = useState('');
   const [ isMessageVisible, setIsMessageVisible ] = useState(false);
@@ -38,6 +38,7 @@ function useForm({ additionalData }) {
         return response.json();
       })
       .then(() => {
+        updateTodoList()
         setMessage("We'll be in touch soon.");
         setStatus('success');
       })

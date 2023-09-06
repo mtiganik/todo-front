@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from 'react'
 
-const url = "http://localhost:8080/api/todos"
 
-const TodoList = () => {
-    const [todos, setTodos] = useState([])
-
-    const fetchTodoData = () => {
-        fetch(url)
-        .then(res =>{return res.json()})
-        .then(data => {setTodos(data)})
-        }
-    useEffect(() => {fetchTodoData()}, [])
+const TodoList = ({todos}) => {
         return(
         <div>
             <p>Todos lenght: {todos.length}</p>

@@ -1,15 +1,15 @@
 import useForm from "./useForm";
 
-const FORM_ENDPOINT = "http://localhost:8080/api/todos"; // TODO - update to the correct endpoint
+const FORM_ENDPOINT = "http://localhost:8080/api/todos"; 
 
-const Form = () => {
+const Form = ({updateTodoList}) => {
   const additionalData = {
     sent: new Date().toISOString(),
     isDone: false
   };
 
   const { handleSubmit, status, message, isMessageVisible } = useForm({
-    additionalData,
+    additionalData, updateTodoList
   });
 
   return (
