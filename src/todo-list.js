@@ -1,6 +1,6 @@
 import ToDoInMainView from "./todo-in-mainview";
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos, deleteTodo}) => {
         return(
         <div>
             <p>Todos lenght: {todos.length}</p>
@@ -8,7 +8,7 @@ const TodoList = ({todos}) => {
                 <ol>
                     {todos.map(todo => (
                         <li key={todo.id}>
-                            <ToDoInMainView  todo = { todo } />
+                            <ToDoInMainView  todo = {todo} onDelete={deleteTodo} />
                         </li>
                     ))}
                 </ol>
