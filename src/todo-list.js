@@ -1,15 +1,17 @@
-
+import ToDoInMainView from "./todo-in-mainview";
 
 const TodoList = ({todos}) => {
         return(
         <div>
             <p>Todos lenght: {todos.length}</p>
             {todos.length > 0 && (
-                <ul>
+                <ol>
                     {todos.map(todo => (
-                        <li key={todo.id}>{todo.todoName}</li>
+                        <li key={todo.id}>
+                            <ToDoInMainView  todo = { todo } />
+                        </li>
                     ))}
-                </ul>
+                </ol>
                 )}
         </div>
     )
