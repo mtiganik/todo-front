@@ -4,7 +4,7 @@ const FORM_ENDPOINT = "http://localhost:8080/api/todos";
 
 const Form = ({updateTodoList}) => {
   const additionalData = {
-    sent: new Date().toISOString(),
+    lastModified: new Date().toISOString(),
     isDone: false
   };
 
@@ -15,14 +15,13 @@ const Form = ({updateTodoList}) => {
   return (
 <>
 
-<hr/>
     <form
       className="form-group row"
       action={FORM_ENDPOINT}
       onSubmit={handleSubmit}
       method="POST"
     >
-    <div className="pt-2 px-4 mb-0 col-sm-2"><label htmlFor ="usr"><h5>Add todo:</h5></label></div>
+    <div className="pt-2 px-4 mb-0 col-sm-2"><label htmlFor ="usr">Add todo:</label></div>
 
       <div className="pt-0 mb-0 col-sm-4">
         <textarea
@@ -57,6 +56,7 @@ const Form = ({updateTodoList}) => {
               </div>
 
       )}
+<hr/>
 
     </>
   );

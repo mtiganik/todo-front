@@ -15,8 +15,8 @@ const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
   }
 
   const handleTodoStatus = () => {
-    todo.isDone = !todo.isDone
-    onEdit(todo.id)
+    const updatedTodo = {...todo, isDone: !todo.isDone}
+    onEdit(updatedTodo)
   }
 
   return (
@@ -26,15 +26,19 @@ const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
       </button>
       {!todo.isDone && (
 
-      <button className="btn btn-outline-success" 
-      title="Mark as done">
-        <CheckSign />
-      </button>
-)}
-{todo.isDone && (
+        <button 
+          className="btn btn-outline-success"
+          title="Mark as done"
+          onClick={handleTodoStatus}>
+          <CheckSign />
+        </button>
+      )}
+      {todo.isDone && (
 
-        <button className="btn btn-outline-danger"
-          title="Remark as undone">
+        <button 
+        className="btn btn-outline-danger"
+          title="Remark as undone"
+          onClick={handleTodoStatus}>
           <ErrorSign />
 
         </button>
