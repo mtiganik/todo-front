@@ -15,12 +15,16 @@ function App() {
         data.sort((a,b) => (a.isDone && !b.isDone ? 1 : -1));
         setTodos(data)})
       }
+      const editTodo = (todo) => {
+        fetch(`${url}/${todoId}`),
+        {method:"PUT"}
+      }
 
       const deleteTodo = (todoId) => {
         fetch(`${url}/${todoId}`,
         {method:"DELETE",})
         .then((response) => {
-          if(response.status ===204){
+          if(response.status ===200){
             const updatedTodos = todos.filter((todo) => todo.id !== todoId)
             setTodos(updatedTodos)
           }else{throw new Error("Failed to delete todo")}
