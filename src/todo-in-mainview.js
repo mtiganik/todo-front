@@ -1,6 +1,9 @@
 import { GarbagePin, ErrorSign, CheckSign } from "./utils/icons";
+import EditTodo from "./editTodo";
+import React from "react"
 
 const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
+  const [isEditHidden, setIsEditHidden] = React.useState(true)
   const buttonClass = `mx-1 mb-1 btn ${todo.isDone ? "btn-success" : "btn-danger"}`;
   const itemStyle = {
     width: "150px", 
@@ -19,9 +22,18 @@ const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
     onEdit(updatedTodo)
   }
 
+  const handleEditTodo = () => {
+    setIsEditHidden(!isEditHidden)
+  }
+
+
+
   return (
     <>
-      <button style={itemStyle} className={buttonClass}>
+      <button 
+      style={itemStyle} 
+      className={buttonClass}
+      onClick={handleEditTodo}>
         {todo.todoName}
       </button>
       {!todo.isDone && (
@@ -43,14 +55,17 @@ const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
 
         </button>
       )}
-
       <button 
       className="btn btn-outline-primary" 
       title="Delete todo"
       onClick={handleDeleteClick}>
         <GarbagePin />
       </button>
+      <div hidden={isEditHidden} className="bg-light p-2 mb-2"
+      >
+        <EditTodo todo = {todo} onEdit={onEdit} setIsEditHidden={setIsEditHidden}/>
 
+      </div>
     </>
   )
 }

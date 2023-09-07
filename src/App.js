@@ -13,6 +13,12 @@ function App() {
       .then(
         data => {
           data.sort((a, b) => (a.isDone && !b.isDone ? 1 : -1));
+
+          // const data = data.map((todo) => ({
+          //   ...todo,
+          //   isActive: false
+          // }))
+
           setTodos(data)
         })
   }
