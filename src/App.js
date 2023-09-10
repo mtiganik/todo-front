@@ -1,27 +1,22 @@
 import TodoList from "./todo-list";
 import Form from "./add-new-todo/Form";
 import React, { useEffect, useState } from 'react'
+import getURL from "./utils/getURL";
 
-const url = "http://localhost:8080/api/todos"
+const url = getURL()
 
 function App() {
   const [todos, setTodos] = useState([])
-
   const fetchTodoData = () => {
     fetch(url)
       .then(res => res.json())
       .then(
         data => {
           data.sort((a, b) => (a.isDone && !b.isDone ? 1 : -1));
-
-          // const data = data.map((todo) => ({
-          //   ...todo,
-          //   isActive: false
-          // }))
-
           setTodos(data)
         })
   }
+  
   const editTodo = (updatedTodo) => {
     const {id} = updatedTodo;
     updatedTodo.lastModified = new Date().toISOString()

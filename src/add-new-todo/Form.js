@@ -1,6 +1,7 @@
 import useForm from "./useForm";
+import getURL from "../utils/getURL";
 
-const FORM_ENDPOINT = "http://localhost:8080/api/todos"; 
+const FORM_ENDPOINT = getURL() 
 
 const Form = ({updateTodoList}) => {
   const additionalData = {
