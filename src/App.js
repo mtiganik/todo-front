@@ -6,6 +6,7 @@ import getURL from "./utils/getURL";
 const url = getURL()
 
 function App() {
+  console.log(url)
   const [todos, setTodos] = useState([])
   const fetchTodoData = () => {
     fetch(url)
