@@ -6,7 +6,7 @@ const ToDoInMainView = ({ todo, onDelete, onEdit }) => {
   const [isEditHidden, setIsEditHidden] = React.useState(true)
   const buttonClass = `mx-1 mb-1 btn ${todo.isDone ? "btn-success" : "btn-danger"}`;
   const itemStyle = {
-    width: "150px", 
+    width: "200px", 
     whiteSpace: "nowrap", 
     overflow: "hidden", 
     textOverflow: "ellipsis",  

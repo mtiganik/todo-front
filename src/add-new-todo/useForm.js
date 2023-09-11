@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useForm({ additionalData, updateTodoList }) {
+function useForm({ additionalData, updateTodoList, setTextBoxValue }) {
   const [status, setStatus] = useState('');
   const [message, setMessage] = useState('');
   const [ isMessageVisible, setIsMessageVisible ] = useState(false);
@@ -10,6 +10,7 @@ function useForm({ additionalData, updateTodoList }) {
     setStatus('loading');
     setMessage('');
     setIsMessageVisible(true)
+    setTextBoxValue("")
     setTimeout(() => {
         setIsMessageVisible(false);
                 }, 3000);

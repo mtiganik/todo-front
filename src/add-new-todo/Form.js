@@ -1,21 +1,23 @@
 import useForm from "./useForm";
 import getURL from "../utils/getURL";
-
+import React from "react";
 const FORM_ENDPOINT = getURL() 
 
 const Form = ({updateTodoList}) => {
+  const [textBoxValue, setTextBoxValue] = React.useState("")
+
+  const onTextBoxValueChanged = (props) => {
+    setTextBoxValue(props.value)
+  }
   const additionalData = {
     lastModified: new Date().toISOString(),
     isDone: false
   };
-
-  const { handleSubmit, status, message, isMessageVisible } = useForm({
-    additionalData, updateTodoList
+  const { handleSubmit, status, message, isMessageVisible } =  useForm({
+    additionalData, updateTodoList, setTextBoxValue
   });
-
   return (
 <>
-
     <form
       className="form-group row"
       action={FORM_ENDPOINT}
@@ -28,6 +30,8 @@ const Form = ({updateTodoList}) => {
         <textarea
           placeholder="Your todo"
           name="todoName"
+          value = {textBoxValue}
+          onChange = {onTextBoxValueChanged}
           className="focus:outline-none focus:ring relative w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border-0 rounded shadow outline-none"
           required
         />
